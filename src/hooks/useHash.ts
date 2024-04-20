@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { collection, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { collection, documentId, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import { getFirebaseStore } from '../firebase/getFirebaseStore';
 import { ACCEPTED_CHARS } from '../constants/ACCEPTED_CHARS';
 
@@ -7,7 +7,9 @@ export const useHash = () => {
   const [hash, setHash] = useState<string>();
 
   useEffect(() => {
-    getDocs(query(collection(getFirebaseStore(), 'url'), orderBy('id', 'desc'), limit(1))).then((querySnapshot) => {
+    getDocs(query(collection(getFirebaseStore(), 'shorten'), orderBy(documentId(), 'desc'), limit(1))).then((querySnapshot) => {
+      console.log({ querySnapshot, size: querySnapshot.size , docs: querySnapshot.docs });
+      
       if (querySnapshot.size > 0) {
         const latUrlPath = querySnapshot.docs[0].id;
         const lastUrlPathChar = latUrlPath[latUrlPath.length - 1];

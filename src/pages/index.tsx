@@ -2,6 +2,7 @@ import { useState } from "react";
 import { encode } from "../functions/encode";
 import { useHash } from "../hooks/useHash";
 import './index.css';
+import { shorten } from "../functions/shorten";
 
 export const Home: React.FC = () => {
   const hash = useHash();
@@ -15,10 +16,10 @@ export const Home: React.FC = () => {
 
     if (!path?.length) {
       path = hash ?? "";
+      shorten(url, path).then(() => setEncoded(path));
+    } else {
+      encode(url, path).then(() => setEncoded(path));
     }
-    
-    console.log(url, path)
-    encode(url, path).then(() => setEncoded(path)).catch(console.error);
   };
 
   return (

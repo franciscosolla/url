@@ -18,10 +18,5 @@ export function Decoder() {
     }
   }, []);
 
-  return (
-    <div>
-      <h1>Redirecting...</h1>
-      <p>{path}</p>
-    </div>
-  );
+  return null;
 }
