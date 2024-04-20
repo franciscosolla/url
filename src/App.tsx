@@ -1,4 +1,3 @@
-import './App.css';
 import { usePath } from './hooks/usePath';
 import { Decoder } from './components/Decoder';
 import { Home } from './pages';

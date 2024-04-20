@@ -24,6 +24,7 @@ export const Home: React.FC = () => {
 
   return (
     <section>
+      <img src="/logo100.png" alt="logo" width={50} />
       <form onSubmit={onSubmit}>
         <div>
           <label>
