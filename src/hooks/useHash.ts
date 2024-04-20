@@ -8,8 +8,6 @@ export const useHash = () => {
 
   useEffect(() => {
     getDocs(query(collection(getFirebaseStore(), 'shorten'), orderBy(documentId(), 'desc'), limit(1))).then((querySnapshot) => {
-      console.log({ querySnapshot, size: querySnapshot.size , docs: querySnapshot.docs });
-      
       if (querySnapshot.size > 0) {
         const latUrlPath = querySnapshot.docs[0].id;
         const lastUrlPathChar = latUrlPath[latUrlPath.length - 1];
